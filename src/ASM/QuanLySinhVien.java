@@ -17,7 +17,7 @@ public class QuanLySinhVien extends javax.swing.JFrame {
 
     public QuanLySinhVien() {
         initComponents();
-       // showToTable();
+        // showToTable();
         dataToList();
     }
 
@@ -362,9 +362,12 @@ public class QuanLySinhVien extends javax.swing.JFrame {
             st.setString(7, "alo");
             st.executeUpdate();
             JOptionPane.showMessageDialog(this, "add thanh cong");
-            dataToList();
-            showToTable();
+
             con.close();
+             //dataToList();
+            lastIndex();
+           // showToTable();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -387,9 +390,10 @@ public class QuanLySinhVien extends javax.swing.JFrame {
             if (model.getRowCount() > 0) {
                 model.removeRow(0);
             }
-            // showToTable();
+
             System.out.println("setRow0");
             con.close();
+            //  showToTable();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -454,6 +458,24 @@ public class QuanLySinhVien extends javax.swing.JFrame {
             };
             model.addRow(row);
         }
+    }
+
+    public void lastIndex() {
+        model = (DefaultTableModel) tblList.getModel();
+        Object row[] = new Object[6];
+        model.setRowCount(0);
+        for (int i = 0; i < list.size(); i++) {
+            row[0] = list.get(i).getManv();
+            row[1] = list.get(i).getHoten();
+            row[2] = list.get(i).getEmail();
+            row[3] = list.get(i).getSodt();
+            row[4] = list.get(i).isGioitinh();
+            row[5] = list.get(i).getDiachi();
+            row[6] = list.get(i).getHinh();
+            model.addRow(row);
+        }
+
+        
     }
 
     public void mouseClick() {

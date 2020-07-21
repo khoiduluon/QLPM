@@ -502,7 +502,7 @@ public class bai2 extends javax.swing.JFrame {
     }
 
     public void Find() {
-        ResultSet rs = null;
+            ResultSet rs = null;
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Connection con = DriverManager.getConnection(url, user, pass);
